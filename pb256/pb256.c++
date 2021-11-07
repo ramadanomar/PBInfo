@@ -4,7 +4,7 @@
 
 using namespace std;
 
-ifstream inFile("test.in");
+//ifstream inFile("test.in");
 
 bool perfSquare(long int nr)
 {
@@ -14,23 +14,22 @@ bool perfSquare(long int nr)
 
 bool esteFib(long int nr)
 {
+    if(nr<=0)
+        return false;
     return (perfSquare(5 * nr * nr + 4) || perfSquare(5 * nr * nr - 4));
 }
 
 int main()
 {
     long int n, nr;
-    //TEST
-    //inFile >> n;
+//    TEST
+//    inFile >> n;
     cin >> n;
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i <n; i++)
     {
 //        inFile >> nr;
         cin >> nr;
-        if (esteFib(nr) == true)
-            cout << "DA\n";
-        else
-            cout << "NU\n";
+        esteFib(nr) ? cout << "DA\n" : cout << "NU\n";
     }
     return 0;
 }

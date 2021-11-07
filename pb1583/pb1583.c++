@@ -1,33 +1,29 @@
-#include <fstream>
-#include <math.h>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-ifstream cin("2prim.in");
-ofstream cout("2prim.out");
-
-int ultCif(int nr) {
-    return nr%100;
-}
-
-int estePrim(int nr) {
-    for(int i=2; i<=nr/2; i++)
-        if (nr%i==0)
-            return 0;
+int prim(int n)
+{
+    if(n==0 || n==1) return 0;
+    if(n==2) return 1;
+    if(n%2==0) return 0;
+    for(int i=3;i*i<=n;i += 2)
+    {
+        if(n%i==0) return 0;
+    }
     return 1;
 }
-
-
 int main()
 {
-    int n, count = 0, nr;
-    cin >> n;
-    for(int i=0;i<n;i++)
-        {
-            cin >> nr;
-            if(estePrim(ultCif(nr)))
-                count++;
-        }
-    cout << count;
+    ifstream fin("2prim.in");
+    ofstream fout("2prim.out");
+    int n,cate=0,x;
+    fin >> n;
+    for(int i=1;i<=n;++i)
+    {
+        fin >> x;
+        if(prim(x%100)) cate++;
+    }
+    fout << cate;
+    fin.close();
+    fout.close();
     return 0;
 }
